@@ -1,0 +1,14 @@
+
+body {
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    color: greenyellow;
+    align-content: center;
+    text-align: center;
+}
+
+ul {
+    display: table;
+    margin: 0 auto;
+    text-align:left;
+}

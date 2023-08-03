@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TextAnalyze</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to TextAnalyzer web interface</h1>
+
+    <p>Enter text or URL:</p>
+    <input type="text" id="input-data"/>
+    <button id="button" onclick="postData()"> Submit </button>
+
+    <div id="result-container"></div>
+
+    <script>
+
+        function postData() {
+            const inputData = document.getElementById('input-data').value;
+
+            fetch('http://127.0.0.1:8000/text-analyze/api', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+                body: inputData
+            })
+                .then(response => response.text())
+                .then(result => {
+                    document.getElementById('result-container').innerHTML = result;
+                })
+                .catch(error => {
+                    console.error('Error posting data:', error);
+                })
+
+
+
+        }
+
+    </script>
+
+ <!--    <form>
+        <label for="results"><h2>Result:</h2></label>
+        <br>
+        <textarea id="results" name="results" rows="40" cols="100"></textarea>
+    </form> -->
+
+</body>
+</html>
